@@ -31,14 +31,19 @@ public class StudentController {
         return service.update(student);
     }
 
+    // localhost:8080/student/2
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
+    public Student remove(@PathVariable long id) {
         return service.remove(id);
     }
 
-    // localhost:8080/student/byAge?age=15
+    // localhost:8080/student/byAge?age=20
     @GetMapping("/byAge")
     public Collection<Student> byAge(@RequestParam int age) {
         return service.filterByAge(age);
+    }
+    @GetMapping("/byAll")
+    public Collection<Student> byAll () {
+        return service.returnAll();
     }
 }
